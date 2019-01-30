@@ -29,7 +29,7 @@ CommonPage commonPage;
 	}
 	
 	@Step
-	public void addItemToBascet(String item) {
+	public void addItemToBasket(String item) {
 		commonPage.addItemToBasket(item);
 	}
 
@@ -39,8 +39,65 @@ CommonPage commonPage;
 		commonPage.openBasket();
 		commonPage.proceedCheckOut();
 		commonPage.enterUserDetails();
-		commonPage.comaprePrice(item);
+		assertTrue("Price and total amount are not equal", commonPage.comparePrice(item));
 		commonPage.finishOrder();
+		assertTrue("Order not finished", commonPage.isOrderFinished());
+		System.out.println("Item bought: " + item);
+	}
+	
+	@Step
+	public void removeItemFromBasket(String item) {
+		commonPage.removeItemFromBasket(item);
+	}
+	
+	@Step
+	public void returnToHome() {
+		commonPage.returnToHome();
+		
+	}
+	
+	@Step
+	public void addAllItemToBasket() {
+		commonPage.addAllItemsToBasket();
+
+	}
+	
+	@Step
+	public void checkoutOrderAllItems() {
+		commonPage.getPriceAllItems();
+		commonPage.openBasket();
+		commonPage.proceedCheckOut();
+		commonPage.enterUserDetails();
+		assertTrue("Price and total amount are not equal", commonPage.compareSum());
+		commonPage.finishOrder();
+		assertTrue("Order not finished", commonPage.isOrderFinished());
+		System.out.println("All item bought");
+	}
+
+	@Step
+	public void cancelCheckoutOrder(String item) {
+		commonPage.getPrice(item);
+		commonPage.openBasket();
+		commonPage.proceedCheckOut();
+		commonPage.enterUserDetails();
+		assertTrue("Price and total amount are not equal", commonPage.comparePrice(item));
+		commonPage.returnToHome();
+	}
+
+	@Step
+	public void checkIsItemInBasket(String item) {
+		commonPage.openBasket();
+		assertTrue("Item: " + item + " is not in basket", commonPage.isItemInBasket());
+	}
+
+	@Step
+	public void resetAppState() {
+		commonPage.resetAppState();
+	}
+
+	@Step
+	public void logout() {
+		commonPage.logout();
 	}
 
 }
