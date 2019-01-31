@@ -2,7 +2,7 @@
 # To run the project:
 Clone the master branch to your PC;
 Import it as a maven project;
-Run maven build of the project
+Run maven build of the project;
 Run the project with Run configuration goal: clean verify;
 
 # Notes and remarks:
