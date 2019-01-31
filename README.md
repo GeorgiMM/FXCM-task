@@ -2,7 +2,8 @@
 # To run the project:
 Clone the master branch to your PC;
 Import it as a maven project;
-Add a new  RunConfiguration: goal: clean verify;
+Run maven build of the project
+Run the project with Run configuration goal: clean verify;
 
 # Notes and remarks:
 * Item quantity is a div and it is not possible to add more than one item. The tests are simplified with one item per test.
